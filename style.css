@@ -1,0 +1,14 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  background-color: #927979;
+}
+
+.treeCanvas {
+  position: absolute;
+  border: 1px solid black;
+}
