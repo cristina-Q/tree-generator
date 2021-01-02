@@ -4,7 +4,7 @@
 
 [View picture fractal tree](https://fractal-tree-paint.netlify.app/)
 
-[![](media/screenshot.png)](https://fractal-tree-paint.netlify.app/)
+> [![](treeapp-screenshot.png)](https://fractal-tree-paint.netlify.app/)
 
 Find 2 different js file:
 app_class.js

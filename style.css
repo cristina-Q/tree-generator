@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 *,
@@ -9,21 +10,47 @@ html {
 }
 
 body {
+  position: relative;
   background: pink;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
+  overflow-y: hidden;
 }
 
 .panel {
-  position: absolute;
-  z-index: 3;
+  position: fixed;
   font-size: 1rem;
   letter-spacing: 2px;
-  padding: 1%;
-  width: 10%;
-  min-width: 130px;
-  height: 100vh;
+  padding: 10px;
   background: rgb(26, 26, 26);
   color: rgb(241, 241, 241);
+  top: 0;
+  left: 0;
+}
+
+.placeBtn {
+  position: fixed;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 11px;
+  color: pink;
+  background-color: black;
+  top: 59px;
+  left: 17px;
+}
+
+.placeBtn:hover {
+  background-color: rgb(68, 60, 60);
+}
+
+.arrow {
+  position: fixed;
+  padding: 3px 20px;
+  font-size: 25px;
+  color: aliceblue;
+  background: black;
+  bottom: 5px;
+  right: 5px;
 }

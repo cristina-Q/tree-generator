@@ -1,22 +1,29 @@
+const placeBtn = document.createElement('button');
+placeBtn.innerText = 'Generate Tree';
+placeBtn.classList.add('placeBtn');
+
 const panel = document.createElement('div');
 panel.classList.add('panel');
 
-const initialmsg = 'Click anywhere inside canvas for XY coordinates';
+const arrow = document.createElement('span');
+arrow.classList.add('arrow');
+arrow.innerText = '↪';
+
+const initialmsg = 'Click anywhere inside canvas for XY coordinates of the next tree then press Generate button ';
 panel.innerText = initialmsg;
 
-let clientWidth = document.body.clientWidth;
-let clientHeight = document.body.clientHeight;
-
 const canvasTree = document.createElement('canvas');
-canvasTree.width = clientWidth;
-canvasTree.height = clientHeight;
+canvasTree.width = 5000;
+canvasTree.height = document.body.clientHeight;
 
 document.body.append(panel);
+document.body.append(placeBtn);
+document.body.append(arrow);
 
 class Tree {
   canvas = canvasTree;
 
-  constructor(loc = [400, 700], length = 150, rotate = 0, thick = 15) {
+  constructor(loc = [220, 700], length = 150, rotate = 0, thick = 15) {
     this.loc = loc;
     this.length = length;
     this.rotate = rotate;
@@ -27,7 +34,6 @@ class Tree {
 
   draw(treeLocation = this.loc, treeLength = this.length, treeRotate = this.rotate, treeThick = this.thick) {
     let self = this; // get a reference to draw
-
     this.ctx.beginPath();
     this.ctx.save();
     this.ctx.lineWidth = treeThick;
@@ -54,8 +60,23 @@ class Tree {
   }
 }
 
-canvasTree.addEventListener('click', (event) => {
-  panel.innerText = `[ ${event.clientX} , ${event.clientY} ]`;
+let Xlocation, Ylocation;
+
+canvasTree.addEventListener(
+  'click',
+  function (e) {
+    const rect = canvasTree.getBoundingClientRect();
+    Xlocation = Math.round(e.clientX - rect.left);
+    Ylocation = Math.round(e.clientY - rect.top);
+
+    panel.innerText = `Place your tree here: [ ${Xlocation} , ${Ylocation} ]`;
+  },
+  false,
+);
+
+placeBtn.addEventListener('click', (e) => {
+  let anytree = new Tree([Xlocation, Ylocation], 70, 0, 7);
+  anytree.draw();
 });
 
 let tree1 = new Tree();
@@ -69,3 +90,11 @@ tree3.draw();
 
 let tree4 = new Tree([1000, 700], 100, 0, 7);
 tree4.draw();
+
+// const Xscroll = document.querySelector('body');
+
+// window.addEventListener('wheel', function (e) {
+//   if (e.deltaY > 0) {
+//     Xscroll.scrollLeft += 100;
+//   } else Xscroll.scrollLeft -= 100;
+// });
