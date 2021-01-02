@@ -1,13 +1,22 @@
-const canvasTree = document.getElementById('treeCanvas');
-let cWidth = document.body.clientWidth;
-let cHeight = document.body.clientHeight;
+const panel = document.createElement('div');
+panel.classList.add('panel');
 
-canvasTree.width = cWidth;
-canvasTree.height = cHeight;
+const initialmsg = 'Click anywhere inside canvas for XY coordinates';
+panel.innerText = initialmsg;
 
-class Pine {
+let clientWidth = document.body.clientWidth;
+let clientHeight = document.body.clientHeight;
+
+const canvasTree = document.createElement('canvas');
+canvasTree.width = clientWidth;
+canvasTree.height = clientHeight;
+
+document.body.append(panel);
+
+class Tree {
   canvas = canvasTree;
-  constructor(loc = [cWidth * 0.2, cHeight * 0.98], length = 150, rotate = 0, thick = 15) {
+
+  constructor(loc = [400, 700], length = 150, rotate = 0, thick = 15) {
     this.loc = loc;
     this.length = length;
     this.rotate = rotate;
@@ -45,11 +54,18 @@ class Pine {
   }
 }
 
-let pine1 = new Pine();
-pine1.draw();
+canvasTree.addEventListener('click', (event) => {
+  panel.innerText = `[ ${event.clientX} , ${event.clientY} ]`;
+});
 
-let pine2 = new Pine();
-pine2.draw([700, 600], 100, 0, 5);
+let tree1 = new Tree();
+tree1.draw();
 
-let pine3 = new Pine([1000, 700], 100, 0, 7);
-pine3.draw();
+let tree2 = new Tree();
+tree2.draw([1200, 600], 100, 0, 5);
+
+let tree3 = new Tree([1000, 700], 100, 0, 7);
+tree3.draw();
+
+let tree4 = new Tree([1000, 700], 100, 0, 7);
+tree4.draw();

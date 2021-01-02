@@ -1,14 +1,29 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-body {
-  height: 100vh;
-  background-color: #927979;
+html {
+  box-sizing: border-box;
 }
 
-.treeCanvas {
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: pink;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.panel {
   position: absolute;
-  border: 1px solid black;
+  z-index: 3;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  padding: 1%;
+  width: 10%;
+  min-width: 130px;
+  height: 100vh;
+  background: rgb(26, 26, 26);
+  color: rgb(241, 241, 241);
 }
